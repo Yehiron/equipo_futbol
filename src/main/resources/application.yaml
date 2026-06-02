@@ -27,5 +27,5 @@ logging:
 
 security:
   jwt:
-    secret-key: "3f8a2b9c7d1e4f6a0b5c8d2e3f9a1b4c7d0e5f8a2b9c3d6e1f4a7b0c5d8e2f9a"
+    secret-key: DxUw7ivIZN+DhQSvueypdE+9ATSldiDQ2HlPvqfRiZw=
     token-expiration: 600000
