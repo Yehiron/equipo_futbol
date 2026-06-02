@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: equipo-futbol-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/futbol_db
+    username: java
+    password: Theburgery1!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1/equipo
+
+logging:
+  level:
+    "[org.springframework]": INFO
+
+security:
+  jwt:
+    secret-key: "3f8a2b9c7d1e4f6a0b5c8d2e3f9a1b4c7d0e5f8a2b9c3d6e1f4a7b0c5d8e2f9a"
+    token-expiration: 600000
