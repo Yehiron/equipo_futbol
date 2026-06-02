@@ -34,25 +34,25 @@ public class JwtInterceptor implements HandlerInterceptor {
             HttpServletResponse response,
             Object handler) throws IOException {
 
-        // 1. Extraigo el header de autorización
+        // Extraigo el header de autorización
         String authHeader = request.getHeader("Authorization");
 
-        // 2. Verifico que venga el token y tenga el formato correcto
+        // Verifico que venga el token y tenga el formato correcto
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             sendUnauthorizedResponse(response, "Falta el token de autorización o el formato es incorrecto");
             return false;
         }
 
-        // 3. Saco solo el token, quitando el "Bearer "
+        // Saco solo el token, quitando el "Bearer "
         String token = authHeader.substring(7);
 
-        // 4. Valido el token usando mi JwtUtil
+        // Valido el token usando mi JwtFilter
         if (!jwtUtil.validateToken(token)) {
             sendUnauthorizedResponse(response, "El token es inválido o ya expiró");
             return false;
         }
 
-        // 5. Extraigo los datos del usuario y los guardo en el request
+        // Extraigo los datos del usuario y los guardo en el request
         String email = jwtUtil.extractEmail(token);
         String roleStr = jwtUtil.extractRole(token);
         Role userRole = Role.valueOf(roleStr);
@@ -60,7 +60,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         request.setAttribute("authenticatedEmail", email);
         request.setAttribute("authenticatedRole", roleStr);
 
-        // 6. Verifico permisos con la anotación @RequiresRole
+        // Verifico permisos con la anotación @RequiresRole
         if (handler instanceof HandlerMethod handlerMethod) {
             RequiresRole requiresRole = handlerMethod.getMethodAnnotation(RequiresRole.class);
             

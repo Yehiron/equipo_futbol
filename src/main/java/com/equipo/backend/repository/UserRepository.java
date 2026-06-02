@@ -9,7 +9,7 @@ import com.equipo.backend.entity.User;
 
 /**
  * Este es el repositorio de acceso a datos que hice para la entidad User
- * Spring Data JPA me genera la implementación de forma automática al correr la app
+ * Spring Data JPA me genera la implementación de forma automática al correr la app 
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
