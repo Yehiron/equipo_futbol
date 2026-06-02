@@ -45,7 +45,7 @@ FLUSH PRIVILEGES;
 
 ```bash
 # Clonar el repositorio
-git clone <url-del-repo>
+git clone <https://github.com/Yehiron/equipo_futbol>
 cd backend
 
 # Ejecutar con Maven Wrapper (no requiere Maven instalado)
